@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Husbandry – Class 9 Biology</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+            line-height:1.6;
+            color:#333;
+            overflow-x:hidden;
+            background:#f7faf7;
+        }
+        .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+        /* NAV */
+        nav{
+            background:linear-gradient(135deg,#4CAF50,#45a049);
+            position:fixed;top:0;width:100%;z-index:1000;
+            box-shadow:0 2px 10px rgba(0,0,0,0.15);
+            backdrop-filter:blur(6px);
+        }
+        nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;}
+        nav li{margin:0 15px;}
+        nav a{
+            color:#fff;text-decoration:none;padding:15px 0;display:block;
+            font-weight:600;letter-spacing:0.5px;
+            position:relative;
+            transition:color .3s ease;
+        }
+        nav a::after{
+            content:"";position:absolute;left:0;bottom:8px;
+            width:0;height:2px;background:#FFD700;
+            transition:width .3s ease;
+        }
+        nav a:hover{color:#FFD700;}
+        nav a:hover::after{width:100%;}
+
+        /* HERO */
+        .hero{
+            background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+                       url("https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=2070&q=80") center/cover;
+            height:100vh;display:flex;align-items:center;justify-content:center;
+            text-align:center;color:#fff;padding:0 15px;
+            animation:fadeInHero 1.2s ease-out both;
+        }
+        .hero h1{
+            font-size:3.2rem;margin-bottom:20px;
+            text-shadow:0 4px 20px rgba(0,0,0,0.6);
+        }
+        .hero p{
+            font-size:1.2rem;max-width:650px;margin:0 auto 20px;
+        }
+        .hero-badge{
+    display:inline-block;
+    padding:10px 22px;          /* bigger pill */
+    border-radius:999px;
+    background:rgba(255,255,255,0.2);
+    border:2px solid rgba(255,255,255,0.6);
+    font-size:1.1rem;           /* larger text */
+    font-weight:700;
+    letter-spacing:2px;         /* more spaced letters */
+    text-transform:uppercase;
+    margin-bottom:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.35);
+    .hero-badge{
+    backdrop-filter:blur(6px);
+}
+
+}
+
+        .hero-btn{
+            margin-top:22px;
+            padding:20px 36px;
+            border-radius:999px;
+            border:none;
+            background:linear-gradient(135deg,#FFEB3B,#FFC107);
+            color:#2E7D32;
+            font-weight:700;
+            cursor:pointer;
+            box-shadow:0 6px 15px rgba(0,0,0,0.3);
+            transition:transform .25s ease,box-shadow .25s ease;
+        }
+        .hero-btn:hover{
+            transform:translateY(-20px) scale(1.02);
+            box-shadow:0 100px 250px rgba(0,0,0,0.35);
+        }
+
+        @keyframes fadeInHero{
+            from{opacity:0;transform:translateY(40px) scale(1.02);}
+            to{opacity:1;transform:translateY(0) scale(1);}
+        }
+
+        /* GENERIC SECTIONS */
+        section{padding:90px 0;}
+        section:nth-of-type(even){background:#f2f8f2;}
+
+        h2{
+            font-size:2.4rem;text-align:center;margin-bottom:10px;color:#2E7D32;
+        }
+        .section-tag{
+            text-align:center;
+            font-size:0.9rem;
+            color:#777;
+            letter-spacing:1px;
+            text-transform:uppercase;
+            margin-bottom:30px;
+        }
+
+        h3{font-size:1.7rem;color:#388E3C;margin:30px 0 15px;}
+
+        .key-point{
+            background:linear-gradient(135deg,#E8F5E8,#C8E6C9);
+            border-left:5px solid #4CAF50;
+            padding:18px 20px;margin:20px 0;
+            border-radius:10px;
+            box-shadow:0 4px 15px rgba(0,0,0,.08);
+            transition:transform .35s ease,box-shadow .35s ease;
+        }
+        .key-point:hover{
+            transform:translateY(-4px);
+            box-shadow:0 10px 25px rgba(0,0,0,.18);
+        }
+        .highlight-term{font-weight:700;color:#1B5E20;}
+
+        .did-you-know{
+            background:linear-gradient(135deg,#FFF3E0,#FFE0B2);
+            border-left:5px solid #FF9800;
+            padding:16px 18px;margin:20px 0;
+            border-radius:10px;
+            box-shadow:0 4px 10px rgba(0,0,0,.06);
+        }
+
+        table{width:100%;border-collapse:collapse;margin:20px 0;box-shadow:0 4px 15px rgba(0,0,0,.08);border-radius:10px;overflow:hidden;}
+        th,td{padding:12px 15px;text-align:left;border-bottom:1px solid #e0e0e0;}
+        th{background:linear-gradient(135deg,#4CAF50,#45a049);color:#fff;font-size:0.95rem;}
+        tr:nth-child(even){background:#fafafa;}
+        tr:hover{background:#E8F5E8;}
+
+        .image-container{text-align:center;margin:28px 0;}
+        .image-container img{
+            max-width:500px;width:60%;height:auto;
+            border-radius:14px;
+            box-shadow:0 10px 30px rgba(0,0,0,.25);
+            transform:scale(1);
+            transition:transform .6s cubic-bezier(0.19,1,0.22,1),box-shadow .6s;
+        }
+        .image-container img.visible-img{
+            transform:scale(1.02);
+        }
+        .image-container img:hover{
+            transform:scale(1.05);
+            box-shadow:0 16px 40px rgba(0,0,0,.35);
+        }
+
+        .summary{
+            background:linear-gradient(135deg,#E3F2FD,#BBDEFB);
+            padding:26px;border-radius:18px;margin:35px 0 5px;
+            box-shadow:0 6px 20px rgba(0,0,0,.12);
+        }
+        .summary ul{margin-top:10px;margin-left:18px;}
+        .summary li{margin-bottom:6px;}
+
+        /* CARD GRID (for quick facts) */
+        .grid-3{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+            gap:20px;
+            margin:20px 0;
+        }
+        .fact-card{
+            background:#fff;
+            border-radius:14px;
+            padding:16px 18px;
+            box-shadow:0 4px 14px rgba(0,0,0,.08);
+            border:1px solid #e0f2e9;
+            transition:transform .3s ease,box-shadow .3s ease;
+        }
+        .fact-card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 12px 26px rgba(0,0,0,.16);
+        }
+        .fact-title{
+            font-weight:700;color:#2E7D32;font-size:0.95rem;margin-bottom:6px;
+        }
+
+        /* ANIMATIONS ON SCROLL */
+        .fade-in{
+            opacity:0;
+            transform:translateY(40px) scale(0.98);
+            transition:opacity .8s ease,transform .8s ease;
+        }
+        .fade-in.visible{
+            opacity:1;
+            transform:translateY(0) scale(1);
+        }
+
+        @media(max-width:768px){
+            .hero h1{font-size:2.3rem;}
+            .hero p{font-size:1rem;}
+            nav ul{flex-direction:column;}
+            table{font-size:0.88rem;}
+            .image-container img{width:85%;max-width:380px;}
+        }
+        html{scroll-behavior:smooth;}
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#whatis">What is?</a></li>
+        <li><a href="#cattle">Cattle</a></li>
+        <li><a href="#poultry">Poultry</a></li>
+        <li><a href="#fish">Fish</a></li>
+        <li><a href="#bee">Bee‑Keeping</a></li>
+        <li><a href="#revision">Revision</a></li>
+    </ul>
+</nav>
+
+<section id="home" class="hero">
+    <div>
+        <div class="hero-badge">12.2</div>
+        <h1>Animal Husbandry – Class 9 Biology</h1>
+        <p>Learn how scientific care of animals increases milk, eggs, meat, fish and honey production, while keeping animals healthy and safe.</p>
+        <button class="hero-btn" onclick="document.getElementById('whatis').scrollIntoView({behavior:'smooth'})">
+            Start Learning ↓
+        </button>
+    </div>
+</section>
+
+<section id="whatis" class="fade-in">
+    <div class="container">
+        <h2>What is Animal Husbandry?</h2>
+        <p class="section-tag">Meaning · Importance · Scope</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=2070&q=80" alt="Mixed livestock farming" loading="lazy">
+        </div>
+
+        <div class="key-point">
+            <span class="highlight-term">Animal husbandry</span> is the scientific management of farm animals for food and other products through proper feeding, housing, breeding and disease control.
+        </div>
+
+        <p>It includes cattle, buffalo, sheep, goat, poultry and fish farming, which together supply milk, meat, eggs and other animal products to a growing population.</p>
+        <p>With rising population and better living standards, the demand for animal products is increasing, so livestock production must be planned scientifically and efficiently.</p>
+        <p>There is also increasing awareness that animals should be treated humanely, so modern farms focus on comfort, cleanliness and low‑stress handling of animals.</p>
+
+        <div class="grid-3">
+            <div class="fact-card">
+                <div class="fact-title">Feeding</div>
+                Balanced rations and feed additives improve growth, reproduction and product quality.
+            </div>
+            <div class="fact-card">
+                <div class="fact-title">Breeding</div>
+                Controlled and cross‑breeding help develop high‑yield, disease‑resistant varieties.
+            </div>
+            <div class="fact-card">
+                <div class="fact-title">Health Care</div>
+                Vaccination, deworming and hygiene protect animals from major diseases and parasites.
+            </div>
+        </div>
+
+        <div class="did-you-know">
+            <strong>Did you know?</strong> Animal husbandry provides regular income, employment and organic manure, and supports integrated farming with crops.
+        </div>
+
+        <div class="summary">
+            <strong>In a nutshell:</strong> Animal husbandry makes livestock farming scientific, productive and humane by combining good housing, feeding, breeding and health‑care practices.
+        </div>
+    </div>
+</section>
+
+<section id="cattle" class="fade-in">
+    <div class="container">
+        <h2>Cattle Farming</h2>
+        <p class="section-tag">Milk · Draught Power · Breeds</p>
+
+        <div class="image-container">
+            <img src="https://www.liveabout.com/thmb/R80eDko37Otph6f0OTFtbzoDaN4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/149134193-57aa84b05f9b58974a2c611a.jpg" alt="Indian cattle breeds" loading="lazy">
+        </div>
+
+        <div class="key-point">
+            <span class="highlight-term">Purpose:</span> Cattle are reared for milk (milch animals) and for farm work like ploughing, irrigation and carting (draught animals).
+        </div>
+
+        <h3>Breeds and Cross‑breeding</h3>
+        <p>Indian cattle belong to two species: <em>Bos indicus</em> (cows) and <em>Bos bubalis</em> (buffaloes). Females that produce milk are called milch animals, while strong males and some females used for work are called draught animals.</p>
+        <p>Milk yield depends partly on the <span class="highlight-term">lactation period</span>, the period after calving during which milk is produced. Longer lactation means more total milk.</p>
+
+        <table>
+            <tr><th>Category</th><th>Indigenous Breeds</th><th>Exotic Breeds</th></tr>
+            <tr><td>Milch</td><td>Red Sindhi, Sahiwal, Gir</td><td>Jersey, Holstein Friesian, Brown Swiss</td></tr>
+            <tr><td>Draught</td><td>Amrit Mahal, Kankrej, Hallikar</td><td>— (mainly Indian used)</td></tr>
+        </table>
+
+        <p>Exotic breeds generally have higher milk yield and longer lactation, while Indian breeds show better disease resistance and adaptability to local climate.</p>
+        <p>Cross‑breeding combines these advantages, producing animals that are disease‑resistant, heat‑tolerant and high milk producers.</p>
+
+        <h3>Housing and Hygiene</h3>
+        <p>Cattle should be housed in well‑ventilated, spacious sheds that protect them from rain, heat and cold. A gentle slope in the floor allows urine and wash water to drain away.</p>
+        <p>Regular brushing removes dirt and loose hair, improving blood circulation and keeping the skin healthy. Clean bedding and separate areas for feeding and dung help maintain hygiene.</p>
+
+        <h3>Feeding and Rations</h3>
+        <div class="grid-3">
+            <div class="fact-card">
+                <div class="fact-title">Maintenance ration</div>
+                Food needed for basic life processes—breathing, movement and normal activity.
+            </div>
+            <div class="fact-card">
+                <div class="fact-title">Milk‑producing ration</div>
+                Extra high‑energy and high‑protein feed given during lactation to support milk yield.
+            </div>
+            <div class="fact-card">
+                <div class="fact-title">Types of feed</div>
+                Roughage (green and dry fodder) plus concentrates (oil cakes, grains, bran, mineral mix).
+            </div>
+        </div>
+        <p>Balanced rations supply carbohydrates, proteins, fats, minerals, vitamins and enough clean water. Mineral mixture and vitamin supplements act as feed additives to enhance health and production.</p>
+
+        <h3>Diseases and Control</h3>
+        <p>Cattle can suffer from external parasites on the skin and internal parasites like worms and flukes in the stomach or liver, which reduce growth and milk production.</p>
+        <p>They are also attacked by infectious diseases caused by bacteria and viruses. Regular deworming, timely vaccination and prompt treatment of sick animals are essential.</p>
+
+        <div class="summary">
+            <strong>Key idea:</strong> High milk production comes from good breeds, long lactation, balanced feeding, clean housing and strict disease control.
+        </div>
+    </div>
+</section>
+
+<section id="poultry" class="fade-in">
+    <div class="container">
+        <h2>Poultry Farming</h2>
+        <p class="section-tag">Layers · Broilers · Management</p>
+
+        <div class="image-container">
+            <img src="https://www.asiafarming.com/wp-content/uploads/2023/09/Chicken-Farming-in-India2-1024x678.jpg" alt="Poultry farm" loading="lazy">
+        </div>
+
+        <div class="key-point">
+            Poultry farming raises domestic fowl for <span class="highlight-term">egg production (layers)</span> and <span class="highlight-term">chicken meat (broilers)</span>.
+        </div>
+
+        <h3>Breeds and Traits</h3>
+        <table>
+            <tr><th>Type</th><th>Indigenous Example</th><th>Exotic Example</th></tr>
+            <tr><td>Layer</td><td>Aseel</td><td>White Leghorn</td></tr>
+            <tr><td>Broiler</td><td>Kadaknath</td><td>Rhode Island Red</td></tr>
+        </table>
+
+        <p>Cross‑breeding between indigenous and exotic birds improves traits such as number and quality of chicks, early maturity, fast growth and better survival.</p>
+        <p>Improved birds are selected for tolerance to high summer temperatures, low maintenance requirements and ability to use cheaper, fibrous feed prepared from agricultural by‑products.</p>
+
+        <h3>Egg vs Broiler Production</h3>
+        <table>
+            <tr><th>Aspect</th><th>Layers (Eggs)</th><th>Broilers (Meat)</th></tr>
+            <tr><td>Main objective</td><td>Maximum number of good‑quality eggs</td><td>Rapid body weight gain and soft meat</td></tr>
+            <tr><td>Ration</td><td>Balanced feed with emphasis on minerals and vitamins for egg shell and yolk</td><td>Protein‑rich feed with extra fat, high vitamins A and K</td></tr>
+            <tr><td>Rearing period</td><td>Start laying around 20 weeks; productive up to ~72 weeks</td><td>Marketed at about 6–8 weeks of age</td></tr>
+        </table>
+
+        <h3>Housing and Health</h3>
+        <p>Poultry houses should be dry, well‑ventilated and protected from extreme heat, cold and rain. Proper stocking density prevents overcrowding and helps birds grow evenly.</p>
+        <p>Clean water, fresh feed, regular cleaning of droppings, and spraying of disinfectants reduce disease risk. Litter should be kept dry to avoid fungal infections.</p>
+        <p>Poultry may suffer from diseases caused by viruses, bacteria, fungi, parasites and from nutritional deficiencies. Systematic vaccination and bio‑security measures protect the flock.</p>
+
+        <div class="did-you-know">
+            <strong>Did you know?</strong> Poultry farming gives quick returns because broilers reach market size in less than two months.
+        </div>
+
+        <div class="summary">
+            <strong>Remember:</strong> Improved breeds + balanced ration + hygienic housing + vaccination = profitable, low‑mortality poultry farm.
+        </div>
+    </div>
+</section>
+
+<section id="fish" class="fade-in">
+    <div class="container">
+        <h2>Fish Production</h2>
+        <p class="section-tag">Capture vs Culture · Marine · Inland</p>
+
+        <div class="image-container">
+            <img src="https://img.freepik.com/premium-photo/fish-processing-plant-production-line-people-sort-fish-moving-along-conveyor-sorting-preparation-fish-production-canned-fish-modern-food-industry_331695-10239.jpg" alt="Fish farming" loading="lazy">
+        </div>
+
+        <div class="key-point">
+            Fish and shellfish are rich, cheap sources of animal protein. Fish production includes both <span class="highlight-term">capture fishing</span> and <span class="highlight-term">culture fishery</span>.
+        </div>
+
+        <p>In capture fishing, fish are obtained directly from natural water bodies. In culture fishery, fish are reared in controlled water bodies like ponds, tanks and reservoirs.</p>
+
+        <h3>Marine Fisheries</h3>
+        <p>India has about 7500 km of coastline and vast deep‑sea areas. Common marine fish are pomfrets, mackerels, tunas, sardines and Bombay duck.</p>
+        <p>Fish are caught using different nets from mechanised boats. Modern devices such as echo‑sounders and satellites help locate large schools of fish in the sea.</p>
+        <p>High‑value marine organisms like mullets, bhetki, pearl spots, prawns, mussels and oysters are also farmed in seawater. Culture of such marine organisms is called <span class="highlight-term">mariculture</span>. Oysters are additionally cultivated for pearls.</p>
+
+        <h3>Inland Fisheries & Composite Fish Culture</h3>
+        <p>Fresh‑water resources include ponds, rivers, canals and reservoirs, while brackish waters like estuaries and lagoons are also important for fish production.</p>
+        <p>Most inland yield comes from aquaculture. Sometimes fish culture is combined with paddy cultivation so that fish grow in the water of paddy fields.</p>
+        <p>In <span class="highlight-term">composite fish culture</span>, several species are stocked together in one pond: Catla (surface feeder), Rohu (middle‑zone feeder), Mrigal and Common Carp (bottom feeders) and Grass Carp (weed feeder). This ensures full use of food available at all levels of the pond without competition.</p>
+        <p>A major problem is shortage of good‑quality fish seed, because many species breed naturally only during monsoon and wild seed may contain unwanted species.</p>
+        <p>This problem is solved by inducing fish to breed in ponds using hormonal stimulation, which provides pure seed of desired species in required quantity.</p>
+
+        <div class="summary">
+            <strong>Exam line:</strong> “Composite fish culture and induced breeding increase fish yield by using all food zones and by ensuring continuous supply of pure fish seed.”
+        </div>
+    </div>
+</section>
+
+<section id="bee" class="fade-in">
+    <div class="container">
+        <h2>Bee‑Keeping (Apiculture)</h2>
+        <p class="section-tag">Honey · Wax · Apiaries</p>
+
+        <div class="image-container">
+            <img src="https://beewellhoneyfarm.com/wp-content/uploads/2017/02/beekeeper.jpg" alt="Beehive apiary" loading="lazy">
+        </div>
+
+        <div class="key-point">
+            Bee‑keeping is a low‑investment enterprise that provides farmers extra income from honey and beeswax while improving pollination of crops.
+        </div>
+
+        <h3>Bee Species</h3>
+        <table>
+            <tr><th>Species</th><th>Common Name</th><th>Features</th></tr>
+            <tr><td><em>Apis cerana indica</em></td><td>Indian bee</td><td>Commonly kept in hives, moderate honey yield.</td></tr>
+            <tr><td><em>Apis dorsata</em></td><td>Rock bee</td><td>Very high honey yield, wild, difficult to domesticate.</td></tr>
+            <tr><td><em>Apis florae</em></td><td>Little bee</td><td>Small, low honey yield.</td></tr>
+            <tr><td><em>Apis mellifera</em></td><td>Italian bee</td><td>High honey yield, gentle, stays longer in hive, breeds well.</td></tr>
+        </table>
+
+        <h3>Apiaries and Pasturage</h3>
+        <p>For commercial honey production, many hives are kept together in bee farms called <span class="highlight-term">apiaries</span>, usually near orchards or fields rich in flowers.</p>
+        <p>The availability of flowering plants providing nectar and pollen is called <span class="highlight-term">pasturage</span>. Both the quantity and type of flowers influence the yield and taste of honey.</p>
+
+        <h3>Why Italian Bees?</h3>
+        <div class="grid-3">
+            <div class="fact-card">
+                <div class="fact-title">High honey capacity</div>
+                They collect and store more honey than local bees.
+            </div>
+            <div class="fact-card">
+                <div class="fact-title">Mild nature</div>
+                They sting less aggressively, so easier to handle.
+            </div>
+            <div class="fact-card">
+                <div class="fact-title">Good hive behaviour</div>
+                They stay longer in the same hive and breed rapidly.
+            </div>
+        </div>
+
+        <div class="summary">
+            <strong>Core idea:</strong> Selecting good bee species, placing apiaries in areas with rich pasturage and careful hive management result in large quantities of high‑quality honey and wax.
+        </div>
+    </div>
+</section>
+
+<section id="revision" class="fade-in">
+    <div class="container">
+        <h2>One‑Page Revision</h2>
+        <p class="section-tag">Exam‑oriented quick notes</p>
+
+        <div class="summary">
+            <h3>Ultra‑Short Points</h3>
+            <ul>
+                <li>Animal husbandry = scientific management of livestock for food and other products.</li>
+                <li>Cattle husbandry aims at milk and draught power; cross‑breeding combines high yield with disease resistance.</li>
+                <li>Balanced ration = roughage + concentrates + minerals + vitamins + clean water.</li>
+                <li>Poultry farming develops layers and broilers with traits like fast growth, early maturity and high egg or meat yield.</li>
+                <li>Good poultry management needs hygienic housing, proper feed, controlled temperature and vaccination.</li>
+                <li>Fish production uses capture fishing and culture fishery in marine and inland waters.</li>
+                <li>Composite fish culture uses species with different feeding zones to utilise all food in the pond.</li>
+                <li>Hormonal stimulation allows induced breeding and continuous supply of pure fish seed.</li>
+                <li>Bee‑keeping uses Indian and Italian bees; honey quality depends on pasturage.</li>
+                <li>Animal husbandry increases food supply, farmer income and employment while promoting scientific and humane care of animals.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+    // section fade‑in
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+            if(e.isIntersecting){
+                e.target.classList.add('visible');
+                const img = e.target.querySelector('.image-container img');
+                if(img){img.classList.add('visible-img');}
+            }
+        });
+    },{threshold:0.18});
+
+    document.querySelectorAll('.fade-in').forEach(sec=>observer.observe(sec));
+</script>
+</body>
+</html>
